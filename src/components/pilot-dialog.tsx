@@ -22,12 +22,12 @@ export function PilotDialog({ open, onOpenChange, plan }: { open: boolean; onOpe
     finally { setPending(false); }
   }
   return <Dialog open={open} onOpenChange={(value) => { onOpenChange(value); if (!value) setSuccess(false); }}><DialogContent className="border-border bg-card sm:max-w-md">
-    <DialogTitle className="text-2xl">{success ? 'You’re on the list.' : 'Protect your next midnight call.'}</DialogTitle>
-    <DialogDescription>{success ? 'Your pilot request has been received.' : `Request your ${plan === 'Pilot' ? '14-day emergency pilot' : plan + ' plan'}.`}</DialogDescription>
+    <DialogTitle className="text-2xl">{success ? 'You’re on the list.' : 'Apply for your emergency pilot.'}</DialogTitle>
+    <DialogDescription>{success ? 'Your pilot request has been received.' : `Share your company details to request ${plan === 'Pilot' ? 'the $149, 14-day emergency pilot' : 'the ' + plan + ' plan'}. No payment is collected.`}</DialogDescription>
     {success ? <div className="py-5"><CheckCircle2 className="mb-4 size-10 text-primary"/><p className="text-sm text-muted-foreground">We have your details and selected plan. Your request does not start billing.</p><Button className="mt-6 w-full" onClick={() => onOpenChange(false)}>Back to Vocallis</Button></div> : <form onSubmit={handleSubmit} className="space-y-4">
       {[['name','Full name','Alex Johnson','text'],['company','Restoration company','Your company','text'],['email','Work email','alex@company.com','email'],['phone','Phone number','(555) 000-0000','tel']].map(([name,label,placeholder,type]) => <label key={name} className="block text-sm font-medium">{label}<input name={name} type={type} placeholder={placeholder} required maxLength={name === 'email' ? 255 : 150} className="mt-2 h-11 w-full rounded-md border border-input bg-background px-3 text-foreground outline-none focus:ring-2 focus:ring-primary"/></label>)}
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
-      <Button disabled={pending} type="submit" className="h-12 w-full">{pending ? <Loader2 className="animate-spin"/> : <ArrowRight/>}{pending ? 'Sending request…' : 'Request emergency pilot'}</Button>
+      <Button disabled={pending} type="submit" className="h-12 w-full">{pending ? <Loader2 className="animate-spin"/> : <ArrowRight/>}{pending ? 'Sending request…' : 'Submit pilot application'}</Button>
       <p className="text-center text-xs text-muted-foreground">Selected plan: {plan} · No payment collected here.</p>
     </form>}
   </DialogContent></Dialog>;

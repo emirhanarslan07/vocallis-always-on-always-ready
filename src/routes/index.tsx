@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Hero, Comparison, Workflow, Revenue, Pricing, FinalCTA } from '@/components/vocallis-sections';
+import { Hero, PhoneService, HomeCallDemo, Comparison, Workflow, Revenue, Pricing, FinalCTA } from '@/components/vocallis-sections';
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
     { title: 'Vocallis | Never Lose a Midnight Flood Call Again' },
@@ -12,5 +12,5 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 function Index() {
-  return <main><Hero/><Comparison/><Workflow/><Revenue/><Pricing/><FinalCTA/></main>;
+  return <main><Hero/><PhoneService/><Comparison/><Workflow/><HomeCallDemo/><Revenue/><Pricing/><FinalCTA/></main>;
 }
