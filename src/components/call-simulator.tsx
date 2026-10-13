@@ -26,8 +26,8 @@ export function CallSimulator() {
     if (speechAvailable && !muted && line) {
       const utterance = new SpeechSynthesisUtterance(line.text);
       utterance.rate = 1.06; utterance.pitch = line.who === 'Vocallis' ? 1.1 : 0.85;
-      utterance.onend = () => { timer = setTimeout(next, 700); };
-      utterance.onerror = () => { timer = setTimeout(next, 2800); };
+      utterance.onend = () => { clearTimeout(timer); timer = setTimeout(next, 700); };
+      utterance.onerror = () => { clearTimeout(timer); timer = setTimeout(next, 2800); };
       window.speechSynthesis.speak(utterance);
       timer = setTimeout(next, 16000);
     } else { timer = setTimeout(next, 3500); }
